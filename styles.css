@@ -1,0 +1,113 @@
+/* Bovimarket - Primera entrega. Mobile First: base = móvil; tablet >=640px; escritorio >=1024px; grande >=1440px */
+:root{--verde-oscuro:#0b5d2a;--verde:#1fa24a;--cafe:#6b4226;--cafe-oscuro:#3a2413;--amarillo:#f5b50f;--crema:#fbf3dc;--gris:#f0e8d6;--texto:#2a1d12;--blanco:#fff;
+--radio:14px;--sombra:0 3px 12px rgba(58,36,19,.15);--margen:max(1rem,calc((100% - 1200px)/2));
+--titulos:'Bricolage Grotesque',system-ui,sans-serif;--cuerpo:'Figtree',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--cuerpo);font-size:1rem;line-height:1.6;color:var(--texto);background:var(--crema);min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+img{display:block;max-width:100%;height:auto;object-fit:cover}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+h1,h2,h3{font-family:var(--titulos);line-height:1.15;color:var(--verde-oscuro)}
+h1{font-size:2rem;font-weight:800}h2{font-size:1.6rem}h3{font-size:1.15rem}
+:focus-visible{outline:3px solid var(--verde);outline-offset:3px}
+main>section,footer{padding:2.5rem var(--margen)}
+main>section>*+*{margin-top:1rem}
+.fondo-gris{background:var(--gris)}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.7rem 1.2rem;border-radius:999px;border:2px solid transparent;font:700 1rem var(--cuerpo);text-decoration:none;cursor:pointer;min-height:44px}
+.btn-primario{background:var(--amarillo);color:var(--cafe-oscuro)}.btn-primario:hover{background:#ffc93c}
+.btn-borde{border-color:var(--verde-oscuro);color:var(--verde-oscuro)}.btn-borde:hover{background:var(--verde-oscuro);color:var(--blanco)}
+.btn-claro{background:var(--blanco);color:var(--verde-oscuro)}.btn-claro:hover{background:var(--crema)}
+.acciones{display:flex;flex-wrap:wrap;gap:.6rem}
+
+/* Encabezado: Grid macro + Flexbox interno */
+.barra{display:grid;gap:.6rem;padding:.8rem var(--margen);background:var(--verde-oscuro);color:var(--blanco);position:sticky;top:0;z-index:10;border-bottom:4px solid var(--amarillo)}
+.logo{font:800 1.4rem var(--titulos);text-decoration:none;color:var(--blanco)}
+.barra nav ul{display:flex;flex-wrap:wrap;gap:.2rem .9rem}
+.barra nav a{text-decoration:none;padding:.25rem 0;display:inline-block}
+.barra nav a:hover{text-decoration:underline}
+.barra .btn-borde{border-color:var(--blanco);color:var(--blanco)}.barra .btn-borde:hover{background:var(--blanco);color:var(--verde-oscuro)}
+
+/* Hero */
+.hero{display:grid;gap:1.2rem;background:linear-gradient(180deg,var(--blanco),var(--crema))}
+.hero p:first-of-type,hgroup p{color:var(--verde-oscuro);font-weight:500}
+.hero picture img{width:100%;aspect-ratio:4/3;border-radius:var(--radio);box-shadow:var(--sombra)}
+.buscador{display:grid;gap:.8rem;background:var(--blanco);padding:1rem;border-radius:var(--radio);box-shadow:var(--sombra);align-items:end}
+
+/* Formularios */
+label{display:block;font-weight:700;font-size:.9rem;margin-bottom:.25rem}
+input,select,textarea{width:100%;font:inherit;padding:.65rem .8rem;border:1.5px solid #b9c4b8;border-radius:10px;background:var(--blanco);min-height:44px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--verde-oscuro)}
+.formulario{display:grid;gap:1rem;background:var(--blanco);padding:1.2rem;border-radius:var(--radio);box-shadow:var(--sombra);max-width:760px}
+.check{display:flex;align-items:center;gap:.6rem}.check input{width:1.3rem;min-height:0;height:1.3rem}.check label{margin:0}
+
+/* Categorías y tarjetas (Grid + Flexbox) */
+.rejilla-cat,.rejilla-tarjetas,.pasos{display:grid;gap:1rem}
+.rejilla-cat{grid-template-columns:repeat(2,1fr)}
+.cat{display:flex;flex-direction:column;border-radius:var(--radio);overflow:hidden;background:var(--blanco);box-shadow:var(--sombra);text-decoration:none;font-weight:700;color:var(--verde-oscuro)}
+.cat img{aspect-ratio:4/3;width:100%}.cat span{padding:.7rem}.cat:hover{transform:translateY(-3px)}
+.tarjeta{display:flex;flex-direction:column;gap:.6rem;background:var(--blanco);border-radius:var(--radio);box-shadow:var(--sombra);padding-bottom:1rem;overflow:hidden}
+.tarjeta>*:not(figure){margin-inline:1rem}
+.tarjeta figure{position:relative}.tarjeta img{width:100%;aspect-ratio:4/3}
+.fav{position:absolute;top:.6rem;right:.6rem;width:44px;height:44px;border:0;border-radius:50%;background:var(--blanco);color:var(--verde-oscuro);font-size:1.2rem;cursor:pointer}
+.fav:hover{color:#c0392b}
+dl{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;font-size:.95rem}dt{font-weight:700}dd{margin:0}
+.precio{font:800 1.3rem var(--titulos);color:var(--cafe)}
+.tarjeta .btn{margin-top:auto}
+.aviso{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding:.8rem 1rem;border-left:5px solid var(--amarillo);background:var(--blanco);border-radius:10px;font-size:.95rem}
+.aviso h2{font-size:1.1rem;width:100%}
+
+/* Vendedores, pasos, FAQ */
+.vendedores{background:var(--cafe);color:var(--blanco)}.vendedores h2{color:var(--blanco)}
+.vendedores ul{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem}.vendedores i{color:var(--amarillo)}.vendedores .btn-claro{background:var(--amarillo);color:var(--cafe-oscuro)}
+.pasos li{display:flex;flex-direction:column;gap:.4rem;background:var(--blanco);padding:1.2rem;border-radius:var(--radio);box-shadow:var(--sombra)}
+.pasos i{font-size:2rem;color:var(--verde)}
+details{background:var(--blanco);border-radius:10px;padding:.9rem 1rem;box-shadow:var(--sombra)}
+summary{cursor:pointer;font-weight:700;color:var(--verde-oscuro)}details p{margin-top:.5rem}
+
+/* Páginas internas */
+.pagina{display:grid;gap:1rem;align-content:start}
+
+/* Pie de página */
+footer{display:grid;gap:1.5rem;background:var(--cafe-oscuro);color:#f3e9d8}
+footer h2{color:var(--amarillo);font-size:1.1rem;margin-bottom:.4rem}
+footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+footer address{font-style:normal;margin-bottom:.6rem}
+.redes{display:flex;gap:.8rem;font-size:1.4rem;margin-top:.6rem}
+.derechos{font-size:.85rem;opacity:.8}
+
+/* Tablet */
+@media (min-width:640px){
+h1{font-size:2.6rem}h2{font-size:2rem}
+.barra{grid-template-columns:1fr auto;align-items:center}.barra nav{grid-column:1/-1;grid-row:2}
+.buscador{grid-template-columns:repeat(2,1fr)}
+.rejilla-cat{grid-template-columns:repeat(3,1fr)}
+.rejilla-tarjetas,.pasos{grid-template-columns:repeat(2,1fr)}
+.formulario.doble{grid-template-columns:repeat(2,1fr);max-width:none}.ancho{grid-column:1/-1}
+footer{grid-template-columns:repeat(2,1fr)}.derechos{grid-column:1/-1}
+}
+/* Escritorio */
+@media (min-width:1024px){
+main>section,footer{padding-block:4rem}
+.barra{grid-template-columns:auto 1fr auto;gap:1.5rem}.barra nav{grid-column:auto;grid-row:auto}.barra nav ul{justify-content:center}
+.hero{grid-template-columns:1.1fr 1fr;align-items:center;column-gap:3rem}
+.hero picture{grid-column:2;grid-row:1/5}.buscador{grid-column:1/-1;grid-template-columns:repeat(3,1fr) auto}
+.rejilla-tarjetas,.pasos{grid-template-columns:repeat(3,1fr)}
+.pagina:has(aside){grid-template-columns:2fr 1fr;column-gap:2rem}.pagina>h1,.pagina>h1+p{grid-column:1/-1}
+footer{grid-template-columns:2fr 1fr 1fr}
+}
+/* Pantallas grandes */
+@media (min-width:1440px){
+body{font-size:1.0625rem}.rejilla-cat{grid-template-columns:repeat(6,1fr)}h1{font-size:3.2rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Acentos de la paleta café / amarillo */
+.logo i{color:var(--amarillo)}
+.hero hgroup p{color:var(--cafe)}
+.pasos li{border-top:4px solid var(--amarillo)}
+.cat span{color:var(--cafe)}
+.tarjeta h3{color:var(--verde-oscuro)}
+.fondo-gris{border-block:1px solid #e2d6bb}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El mercado ganadero | Bovimarket</title>
+<meta name="description" content="Bovimarket: compra y venta de ganado bovino en Colombia. Explora razas, precios y publica tu ganado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="barra">
+<a class="logo" href="index.html"><i class="bi bi-diagram-3-fill" aria-hidden="true"></i> Bovimarket</a>
+<nav aria-label="Principal">
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="index.html#catalogo">Comprar ganado</a></li>
+<li><a href="vender.html">Vender ganado</a></li>
+<li><a href="index.html#categorias">Categorías</a></li>
+<li><a href="index.html#como-funciona">Cómo funciona</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+</ul>
+</nav>
+<p class="acciones"><a class="btn btn-borde" href="#">Iniciar sesión</a> <a class="btn btn-primario" href="vender.html">Publicar ganado</a></p>
+</header>
+<main>
+<section class="hero" aria-labelledby="hero-titulo">
+<hgroup><h1 id="hero-titulo">Encuentra el ganado ideal para tu negocio</h1><p>El mercado ganadero, más cerca de ti.</p></hgroup>
+<p>Conecta con ganaderos de todo el país, compara razas y precios y cierra tus negocios directamente con el vendedor.</p>
+<p class="acciones"><a class="btn btn-primario" href="#catalogo">Explorar ganado</a> <a class="btn btn-claro" href="vender.html">Publicar mi ganado</a></p>
+<picture><source media="(min-width: 768px)" srcset="assets/images/hero.svg"><img src="assets/images/image.png" alt="Ganado bovino pastando en una finca colombiana" width="400" height="300"></picture>
+<form class="buscador" role="search" action="#">
+<p><label for="b-raza">Raza</label><select id="b-raza"><option>Todas</option><option>Brahman</option><option>Nelore</option><option>Gyr</option><option>Angus</option><option>Simmental</option></select></p>
+<p><label for="b-ubi">Ubicación</label><input id="b-ubi" type="text" placeholder="Departamento o municipio"></p>
+<p><label for="b-precio">Rango de precio</label><select id="b-precio"><option>Cualquiera</option><option>Hasta $3.000.000</option><option>$3.000.000 a $6.000.000</option><option>Más de $6.000.000</option></select></p>
+<button class="btn btn-primario" type="button"><i class="bi bi-search" aria-hidden="true"></i> Buscar</button>
+</form>
+</section>
+<section id="categorias" aria-labelledby="t-cat">
+<h2 id="t-cat">Categorías de ganado</h2>
+<ul class="rejilla-cat">
+<li><a class="cat" href="#catalogo"><img src="assets/images/novilla.png" alt="Ejemplar de ganado: Brahman" width="400" height="300" loading="lazy"><span>Brahman</span></a></li>
+<li><a class="cat" href="#catalogo"><img src="assets/images/nerole.png" alt="Ejemplar de ganado: Nelore" width="400" height="300" loading="lazy"><span>Nelore</span></a></li>
+<li><a class="cat" href="#catalogo"><img src="assets/images/gyr.png" alt="Ejemplar de ganado: Gyr" width="400" height="300" loading="lazy"><span>Gyr</span></a></li>
+<li><a class="cat" href="#catalogo"><img src="assets/images/agus.png" alt="Ejemplar de ganado: Angus" width="400" height="300" loading="lazy"><span>Angus</span></a></li>
+<li><a class="cat" href="#catalogo"><img src="assets/images/sime.png" alt="Ejemplar de ganado: Simmental" width="400" height="300" loading="lazy"><span>Simmental</span></a></li>
+<li><a class="cat" href="#catalogo"><img src="assets/images/cebu.png" alt="Ejemplar de ganado: Ganado comercial y cruces" width="400" height="300" loading="lazy"><span>Ganado comercial y cruces</span></a></li>
+</ul>
+</section>
+<section id="catalogo" class="fondo-gris" aria-labelledby="t-cat2">
+<h2 id="t-cat2">Catálogo destacado</h2>
+<aside class="aviso"><i class="bi bi-info-circle" aria-hidden="true"></i> Las publicaciones son datos ficticios con fines de presentación.</aside>
+<section class="rejilla-tarjetas" aria-label="Publicaciones destacadas">
+<article class="tarjeta">
+<figure><img src="assets/images/novilla.png" alt="Lote de novillas Brahman: ejemplar Brahman en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Lote de novillas Brahman en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
+<h3>Lote de novillas Brahman</h3>
+<dl><dt>Raza</dt><dd>Brahman</dd><dt>Sexo</dt><dd>Hembra</dd><dt>Edad</dt><dd>18 meses</dd><dt>Peso</dt><dd>320 kg</dd><dt>Ubicación</dt><dd>Montería, Córdoba</dd></dl>
+<p class="precio">$4.800.000 COP</p>
+<a class="btn btn-primario" href="#">Ver detalles</a>
+</article>
+<article class="tarjeta">
+<figure><img src="assets/images/nerole.png" alt="Toro reproductor Nelore: ejemplar Nelore en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Toro reproductor Nelore en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
+<h3>Toro reproductor Nelore</h3>
+<dl><dt>Raza</dt><dd>Nelore</dd><dt>Sexo</dt><dd>Macho</dd><dt>Edad</dt><dd>30 meses</dd><dt>Peso</dt><dd>620 kg</dd><dt>Ubicación</dt><dd>Villavicencio, Meta</dd></dl>
+<p class="precio">$9.500.000 COP</p>
+<a class="btn btn-primario" href="#">Ver detalles</a>
+</article>
+<article class="tarjeta">
+<figure><img src="assets/images/gyr.png" alt="Vaca lechera Gyr: ejemplar Gyr en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Vaca lechera Gyr en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
+<h3>Vaca lechera Gyr</h3>
+<dl><dt>Raza</dt><dd>Gyr</dd><dt>Sexo</dt><dd>Hembra</dd><dt>Edad</dt><dd>40 meses</dd><dt>Peso</dt><dd>450 kg</dd><dt>Ubicación</dt><dd>Sincelejo, Sucre</dd></dl>
+<p class="precio">$6.200.000 COP</p>
+<a class="btn btn-primario" href="#">Ver detalles</a>
+</article>
+<article class="tarjeta">
+<figure><img src="assets/images/agus.png" alt="Novillos Angus para ceba: ejemplar Angus en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Novillos Angus para ceba en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
+<h3>Novillos Angus para ceba</h3>
+<dl><dt>Raza</dt><dd>Angus</dd><dt>Sexo</dt><dd>Macho</dd><dt>Edad</dt><dd>14 meses</dd><dt>Peso</dt><dd>380 kg</dd><dt>Ubicación</dt><dd>Yopal, Casanare</dd></dl>
+<p class="precio">$5.100.000 COP</p>
+<a class="btn btn-primario" href="#">Ver detalles</a>
+</article>
+<article class="tarjeta">
+<figure><img src="assets/images/sime.png" alt="Terneras Simmental: ejemplar Simmental en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Terneras Simmental en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
+<h3>Terneras Simmental</h3>
+<dl><dt>Raza</dt><dd>Simmental</dd><dt>Sexo</dt><dd>Hembra</dd><dt>Edad</dt><dd>8 meses</dd><dt>Peso</dt><dd>210 kg</dd><dt>Ubicación</dt><dd>Pasto, Nariño</dd></dl>
+<p class="precio">$3.400.000 COP</p>
+<a class="btn btn-primario" href="#">Ver detalles</a>
+</article>
+<article class="tarjeta">
+<figure><img src="assets/images/cebu.png" alt="Lote comercial cruce Cebú: ejemplar Cruce Cebú en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Lote comercial cruce Cebú en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
+<h3>Lote comercial cruce Cebú</h3>
+<dl><dt>Raza</dt><dd>Cruce Cebú</dd><dt>Sexo</dt><dd>Mixto</dd><dt>Edad</dt><dd>24 meses</dd><dt>Peso</dt><dd>400 kg</dd><dt>Ubicación</dt><dd>Valledupar, Cesar</dd></dl>
+<p class="precio">$4.300.000 COP</p>
+<a class="btn btn-primario" href="#">Ver detalles</a>
+</article>
+</section>
+</section>
+<section class="vendedores" aria-labelledby="t-vend">
+<h2 id="t-vend">Muestra tu ganado a compradores de toda Colombia</h2>
+<p>Publica tus animales con fotos y precio, y recibe contactos de compradores interesados.</p>
+<ul><li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Publicación sencilla</li><li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Contacto directo con el comprador</li><li><i class="bi bi-check-circle-fill" aria-hidden="true"></i> Cobertura nacional</li></ul>
+<a class="btn btn-claro" href="vender.html">Quiero vender mi ganado</a>
+</section>
+<section id="como-funciona" aria-labelledby="t-como">
+<h2 id="t-como">Cómo funciona</h2>
+<ol class="pasos">
+<li><i class="bi bi-search" aria-hidden="true"></i><h3>Explora las publicaciones</h3><p>Filtra por raza, ubicación y precio.</p></li>
+<li><i class="bi bi-chat-dots" aria-hidden="true"></i><h3>Contacta al vendedor</h3><p>Resuelve tus dudas sobre el animal.</p></li>
+<li><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i><h3>Acuerda la compra directamente</h3><p>Negocia las condiciones con el vendedor.</p></li>
+</ol>
+</section>
+<section id="contacto" class="fondo-gris" aria-labelledby="t-con">
+<h2 id="t-con">Escríbenos</h2>
+<form class="formulario" action="#" method="post">
+<p><label for="c-nombre">Nombre completo</label><input id="c-nombre" name="nombre" type="text" autocomplete="name" minlength="3" required></p>
+<p><label for="c-correo">Correo electrónico</label><input id="c-correo" name="correo" type="email" autocomplete="email" required></p>
+<p><label for="c-tel">Teléfono celular</label><input id="c-tel" name="telefono" type="tel" pattern="3[0-9]{9}" placeholder="3001234567" title="Celular colombiano de 10 dígitos que empieza por 3" required></p>
+<p><label for="c-asunto">Asunto</label><select id="c-asunto" name="asunto" required><option value="">Selecciona un asunto</option><option>Quiero comprar ganado</option><option>Quiero vender ganado</option><option>Soporte</option></select></p>
+<p><label for="c-fecha">Fecha de contacto preferida</label><input id="c-fecha" name="fecha" type="date"></p>
+<p><label for="c-msg">Mensaje</label><textarea id="c-msg" name="mensaje" rows="5" minlength="10" maxlength="500" required></textarea></p>
+<p class="check"><input id="c-terminos" name="terminos" type="checkbox" required><label for="c-terminos">Acepto los términos y condiciones</label></p>
+<button class="btn btn-primario" type="submit">Enviar mensaje</button>
+</form>
+</section>
+<section id="faq" aria-labelledby="t-faq">
+<h2 id="t-faq">Preguntas frecuentes</h2>
+<details><summary>¿Cómo compro un animal?</summary><p>Explora el catálogo, contacta al vendedor y acuerdan precio, entrega y pago directamente.</p></details>
+<details><summary>¿Cómo publico mi ganado?</summary><p>Completa el formulario de la página Vender ganado con los datos y fotos de tus animales.</p></details>
+<details><summary>¿Cómo me contactan los compradores?</summary><p>Los interesados te escriben por los medios de contacto que indiques en tu publicación.</p></details>
+<details><summary>¿Bovimarket cobra comisión?</summary><p>En esta etapa del proyecto no hay transacciones: la plataforma es solo una presentación visual.</p></details>
+</section>
+</main>
+<footer>
+<section aria-labelledby="pie-marca">
+<h2 id="pie-marca"><i class="bi bi-diagram-3-fill" aria-hidden="true"></i> Bovimarket</h2>
+<p>El mercado ganadero, más cerca de ti. Plataforma para conectar compradores y vendedores de ganado bovino en Colombia.</p>
+<p class="redes"><a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a> <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></p>
+</section>
+<nav aria-labelledby="pie-nav">
+<h2 id="pie-nav">Navegación</h2>
+<ul><li><a href="index.html">Inicio</a></li><li><a href="index.html#catalogo">Comprar ganado</a></li><li><a href="vender.html">Vender ganado</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+</nav>
+<section aria-labelledby="pie-contacto">
+<h2 id="pie-contacto">Contacto (datos de ejemplo)</h2>
+<address><a href="mailto:contacto@bovimarket.example">contacto@bovimarket.example</a><br>+57 300 000 0000<br>Montería, Córdoba</address>
+<ul><li><a href="#">Términos y condiciones</a></li><li><a href="#">Política de privacidad</a></li></ul>
+</section>
+<p class="derechos">© 2026 Bovimarket. Todos los derechos reservados. Proyecto académico.</p>
+</footer>
+</body>
+</html>
+git --version
