@@ -32,11 +32,11 @@
 <p>Conecta con ganaderos de todo el país, compara razas y precios y cierra tus negocios directamente con el vendedor.</p>
 <p class="acciones"><a class="btn btn-primario" href="#catalogo">Explorar ganado</a> <a class="btn btn-claro" href="vender.html">Publicar mi ganado</a></p>
 <picture><source media="(min-width: 768px)" srcset="assets/images/hero.svg"><img src="assets/images/image.png" alt="Ganado bovino pastando en una finca colombiana" width="400" height="300"></picture>
-<form class="buscador" role="search" action="#">
-<p><label for="b-raza">Raza</label><select id="b-raza"><option>Todas</option><option>Brahman</option><option>Nelore</option><option>Gyr</option><option>Angus</option><option>Simmental</option></select></p>
-<p><label for="b-ubi">Ubicación</label><input id="b-ubi" type="text" placeholder="Departamento o municipio"></p>
-<p><label for="b-precio">Rango de precio</label><select id="b-precio"><option>Cualquiera</option><option>Hasta $3.000.000</option><option>$3.000.000 a $6.000.000</option><option>Más de $6.000.000</option></select></p>
-<button class="btn btn-primario" type="button"><i class="bi bi-search" aria-hidden="true"></i> Buscar</button>
+<form class="buscador" id="buscador" role="search" action="#">
+<p><label for="b-raza">Raza</label><select id="b-raza" name="raza"><option>Todas</option><option>Brahman</option><option>Nelore</option><option>Gyr</option><option>Angus</option><option>Simmental</option></select></p>
+<p><label for="b-ubi">Ubicación</label><input id="b-ubi" name="ubicacion" type="text" placeholder="Departamento o municipio"></p>
+<p><label for="b-precio">Rango de precio</label><select id="b-precio" name="precio"><option>Cualquiera</option><option value="bajo">Hasta $3.000.000</option><option value="medio">$3.000.000 a $6.000.000</option><option value="alto">Más de $6.000.000</option></select></p>
+<button class="btn btn-primario" id="btn-buscar" type="submit"><i class="bi bi-search" aria-hidden="true"></i> Buscar</button><button class="btn btn-borde" id="limpiar-busqueda" type="button">Limpiar</button>
 </form>
 </section>
 <section id="categorias" aria-labelledby="t-cat">
@@ -53,50 +53,7 @@
 <section id="catalogo" class="fondo-gris" aria-labelledby="t-cat2">
 <h2 id="t-cat2">Catálogo destacado</h2>
 <aside class="aviso"><i class="bi bi-info-circle" aria-hidden="true"></i> Las publicaciones son datos ficticios con fines de presentación.</aside>
-<section class="rejilla-tarjetas" aria-label="Publicaciones destacadas">
-<article class="tarjeta">
-<figure><img src="assets/images/novilla.png" alt="Lote de novillas Brahman: ejemplar Brahman en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Lote de novillas Brahman en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
-<h3>Lote de novillas Brahman</h3>
-<dl><dt>Raza</dt><dd>Brahman</dd><dt>Sexo</dt><dd>Hembra</dd><dt>Edad</dt><dd>18 meses</dd><dt>Peso</dt><dd>320 kg</dd><dt>Ubicación</dt><dd>Montería, Córdoba</dd></dl>
-<p class="precio">$4.800.000 COP</p>
-<a class="btn btn-primario" href="#">Ver detalles</a>
-</article>
-<article class="tarjeta">
-<figure><img src="assets/images/nerole.png" alt="Toro reproductor Nelore: ejemplar Nelore en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Toro reproductor Nelore en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
-<h3>Toro reproductor Nelore</h3>
-<dl><dt>Raza</dt><dd>Nelore</dd><dt>Sexo</dt><dd>Macho</dd><dt>Edad</dt><dd>30 meses</dd><dt>Peso</dt><dd>620 kg</dd><dt>Ubicación</dt><dd>Villavicencio, Meta</dd></dl>
-<p class="precio">$9.500.000 COP</p>
-<a class="btn btn-primario" href="#">Ver detalles</a>
-</article>
-<article class="tarjeta">
-<figure><img src="assets/images/gyr.png" alt="Vaca lechera Gyr: ejemplar Gyr en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Vaca lechera Gyr en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
-<h3>Vaca lechera Gyr</h3>
-<dl><dt>Raza</dt><dd>Gyr</dd><dt>Sexo</dt><dd>Hembra</dd><dt>Edad</dt><dd>40 meses</dd><dt>Peso</dt><dd>450 kg</dd><dt>Ubicación</dt><dd>Sincelejo, Sucre</dd></dl>
-<p class="precio">$6.200.000 COP</p>
-<a class="btn btn-primario" href="#">Ver detalles</a>
-</article>
-<article class="tarjeta">
-<figure><img src="assets/images/agus.png" alt="Novillos Angus para ceba: ejemplar Angus en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Novillos Angus para ceba en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
-<h3>Novillos Angus para ceba</h3>
-<dl><dt>Raza</dt><dd>Angus</dd><dt>Sexo</dt><dd>Macho</dd><dt>Edad</dt><dd>14 meses</dd><dt>Peso</dt><dd>380 kg</dd><dt>Ubicación</dt><dd>Yopal, Casanare</dd></dl>
-<p class="precio">$5.100.000 COP</p>
-<a class="btn btn-primario" href="#">Ver detalles</a>
-</article>
-<article class="tarjeta">
-<figure><img src="assets/images/sime.png" alt="Terneras Simmental: ejemplar Simmental en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Terneras Simmental en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
-<h3>Terneras Simmental</h3>
-<dl><dt>Raza</dt><dd>Simmental</dd><dt>Sexo</dt><dd>Hembra</dd><dt>Edad</dt><dd>8 meses</dd><dt>Peso</dt><dd>210 kg</dd><dt>Ubicación</dt><dd>Pasto, Nariño</dd></dl>
-<p class="precio">$3.400.000 COP</p>
-<a class="btn btn-primario" href="#">Ver detalles</a>
-</article>
-<article class="tarjeta">
-<figure><img src="assets/images/cebu.png" alt="Lote comercial cruce Cebú: ejemplar Cruce Cebú en potrero" width="400" height="300" loading="lazy"><button class="fav" type="button" aria-label="Guardar Lote comercial cruce Cebú en favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button></figure>
-<h3>Lote comercial cruce Cebú</h3>
-<dl><dt>Raza</dt><dd>Cruce Cebú</dd><dt>Sexo</dt><dd>Mixto</dd><dt>Edad</dt><dd>24 meses</dd><dt>Peso</dt><dd>400 kg</dd><dt>Ubicación</dt><dd>Valledupar, Cesar</dd></dl>
-<p class="precio">$4.300.000 COP</p>
-<a class="btn btn-primario" href="#">Ver detalles</a>
-</article>
-</section>
+<p id="api-status" class="feedback" role="status" aria-live="polite" hidden></p><section id="catalogo-lista" class="rejilla-tarjetas" aria-label="Publicaciones destacadas"><p class="aviso">Preparando catálogo...</p></section>
 </section>
 <section class="vendedores" aria-labelledby="t-vend">
 <h2 id="t-vend">Muestra tu ganado a compradores de toda Colombia</h2>
@@ -114,7 +71,7 @@
 </section>
 <section id="contacto" class="fondo-gris" aria-labelledby="t-con">
 <h2 id="t-con">Escríbenos</h2>
-<form class="formulario" action="#" method="post">
+<form class="formulario" data-contact-form action="#" method="post">
 <p><label for="c-nombre">Nombre completo</label><input id="c-nombre" name="nombre" type="text" autocomplete="name" minlength="3" required></p>
 <p><label for="c-correo">Correo electrónico</label><input id="c-correo" name="correo" type="email" autocomplete="email" required></p>
 <p><label for="c-tel">Teléfono celular</label><input id="c-tel" name="telefono" type="tel" pattern="3[0-9]{9}" placeholder="3001234567" title="Celular colombiano de 10 dígitos que empieza por 3" required></p>
@@ -122,7 +79,7 @@
 <p><label for="c-fecha">Fecha de contacto preferida</label><input id="c-fecha" name="fecha" type="date"></p>
 <p><label for="c-msg">Mensaje</label><textarea id="c-msg" name="mensaje" rows="5" minlength="10" maxlength="500" required></textarea></p>
 <p class="check"><input id="c-terminos" name="terminos" type="checkbox" required><label for="c-terminos">Acepto los términos y condiciones</label></p>
-<button class="btn btn-primario" type="submit">Enviar mensaje</button>
+<button class="btn btn-primario" type="submit">Enviar mensaje</button><p class="form-feedback" role="status" aria-live="polite" hidden></p>
 </form>
 </section>
 <section id="faq" aria-labelledby="t-faq">
@@ -150,6 +107,7 @@
 </section>
 <p class="derechos">© 2026 Bovimarket. Todos los derechos reservados. Proyecto académico.</p>
 </footer>
+<script src="js/app.js" defer></script>
 </body>
 </html>
 git --version

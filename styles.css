@@ -30,6 +30,30 @@ main>section>*+*{margin-top:1rem}
 .barra nav a:hover{text-decoration:underline}
 .barra .btn-borde{border-color:var(--blanco);color:var(--blanco)}.barra .btn-borde:hover{background:var(--blanco);color:var(--verde-oscuro)}
 
+/* Navegación: interacción elegante sin subrayado */
+.barra nav ul{align-items:center;gap:.35rem .45rem}
+.barra nav a{
+  position:relative;
+  padding:.58rem .82rem;
+  border-radius:10px;
+  color:rgba(255,255,255,.92);
+  text-decoration:none;
+  transition:background-color .22s ease, color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.barra nav a:hover,
+.barra nav a:focus-visible{
+  color:var(--blanco);
+  background:rgba(255,255,255,.14);
+  box-shadow:0 4px 14px rgba(0,0,0,.18), inset 0 0 0 1px rgba(255,255,255,.12);
+  text-decoration:none;
+  transform:translateY(-1px);
+}
+.barra nav a:active{transform:translateY(0);background:rgba(255,255,255,.2)}
+@media (prefers-reduced-motion:reduce){
+  .barra nav a{transition:none}
+}
+
+
 /* Hero */
 .hero{display:grid;gap:1.2rem;background:linear-gradient(180deg,var(--blanco),var(--crema))}
 .hero p:first-of-type,hgroup p{color:var(--verde-oscuro);font-weight:500}
@@ -111,3 +135,15 @@ body{font-size:1.0625rem}.rejilla-cat{grid-template-columns:repeat(6,1fr)}h1{fon
 .cat span{color:var(--cafe)}
 .tarjeta h3{color:var(--verde-oscuro)}
 .fondo-gris{border-block:1px solid #e2d6bb}
+
+
+/* Avance 2: estados de interacción, validación y mensajes */
+.feedback{padding:.8rem 1rem;border-radius:10px;margin-block:.8rem;font-size:.95rem}
+.feedback-success{background:#e5f5e9;border-left:5px solid #1fa24a;color:#14532d}
+.feedback-error{background:#fde8e7;border-left:5px solid #c0392b;color:#842029}
+.feedback-loading{background:#fff4d6;border-left:5px solid #f5b50f;color:#6b4226}
+.is-valid{border-color:#1fa24a!important;box-shadow:0 0 0 2px rgba(31,162,74,.12)}
+.is-invalid{border-color:#c0392b!important;box-shadow:0 0 0 2px rgba(192,57,43,.1)}
+.field-error{display:block;color:#b42318;font-size:.82rem;margin-top:.25rem}
+.fav[aria-pressed="true"]{color:#c0392b}
+button:disabled{opacity:.6;cursor:not-allowed}

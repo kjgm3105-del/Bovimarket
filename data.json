@@ -1,0 +1,68 @@
+[
+  {
+    "id": "demo-1",
+    "titulo": "Lote de novillas Brahman",
+    "raza": "Brahman",
+    "sexo": "Hembra",
+    "edad": 18,
+    "peso": 320,
+    "ubicacion": "Montería, Córdoba",
+    "precio": 4800000,
+    "imagen": "assets/images/novilla.png"
+  },
+  {
+    "id": "demo-2",
+    "titulo": "Toro reproductor Nelore",
+    "raza": "Nelore",
+    "sexo": "Macho",
+    "edad": 30,
+    "peso": 620,
+    "ubicacion": "Villavicencio, Meta",
+    "precio": 9500000,
+    "imagen": "assets/images/nerole.png"
+  },
+  {
+    "id": "demo-3",
+    "titulo": "Vaca lechera Gyr",
+    "raza": "Gyr",
+    "sexo": "Hembra",
+    "edad": 40,
+    "peso": 450,
+    "ubicacion": "Sincelejo, Sucre",
+    "precio": 6200000,
+    "imagen": "assets/images/gyr.png"
+  },
+  {
+    "id": "demo-4",
+    "titulo": "Novillos Angus para ceba",
+    "raza": "Angus",
+    "sexo": "Macho",
+    "edad": 14,
+    "peso": 380,
+    "ubicacion": "Yopal, Casanare",
+    "precio": 5100000,
+    "imagen": "assets/images/agus.png"
+  },
+  {
+    "id": "demo-5",
+    "titulo": "Terneras Simmental",
+    "raza": "Simmental",
+    "sexo": "Hembra",
+    "edad": 8,
+    "peso": 210,
+    "ubicacion": "Pasto, Nariño",
+    "precio": 3400000,
+    "imagen": "assets/images/sime.png"
+  },
+  {
+    "id": "demo-6",
+    "titulo": "Lote comercial cruce Cebú",
+    "raza": "Cruce comercial",
+    "sexo": "Mixto",
+    "edad": 24,
+    "peso": 400,
+    "ubicacion": "Valledupar, Cesar",
+    "precio": 4300000,
+    "imagen": "assets/images/cebu.png"
+  }
+]

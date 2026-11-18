@@ -29,8 +29,8 @@
 <main>
 <section class="pagina" aria-labelledby="t-v">
 <h1 id="t-v">Publica tu ganado</h1>
-<p>Completa los datos del animal o lote. Este formulario es visual y no guarda información todavía.</p>
-<form class="formulario doble" action="#" method="post">
+<p>Completa los datos del animal o lote. Tus publicaciones se validan y quedan guardadas en este navegador.</p>
+<form class="formulario doble" id="form-publicar" action="#" method="post">
 <p><label for="v-titulo">Título de la publicación</label><input id="v-titulo" name="titulo" type="text" maxlength="80" required></p>
 <p><label for="v-raza">Raza</label><select id="v-raza" name="raza" required><option value="">Selecciona</option><option>Brahman</option><option>Nelore</option><option>Gyr</option><option>Angus</option><option>Simmental</option><option>Cruce comercial</option></select></p>
 <p><label for="v-sexo">Sexo</label><select id="v-sexo" name="sexo" required><option value="">Selecciona</option><option>Hembra</option><option>Macho</option><option>Lote mixto</option></select></p>
@@ -42,9 +42,9 @@
 <p><label for="v-depto">Departamento</label><select id="v-depto" name="departamento" required><option value="">Selecciona</option><option>Antioquia</option><option>Casanare</option><option>Cesar</option><option>Córdoba</option><option>Meta</option><option>Santander</option><option>Sucre</option><option>Otro</option></select></p>
 <p><label for="v-muni">Municipio</label><input id="v-muni" name="municipio" type="text" required></p>
 <p><label for="v-fecha">Fecha de disponibilidad</label><input id="v-fecha" name="disponibilidad" type="date"></p>
-<p><label for="v-fotos">Fotografías</label><input id="v-fotos" name="fotos" type="file" accept="image/*" multiple></p>
+<p><label for="v-fotos">Fotografías</label><input id="v-fotos" name="fotos" type="file" accept="image/*" multiple><small>La primera fotografía será la imagen principal de tu publicación.</small></p>
 <p class="ancho"><label for="v-desc">Descripción</label><textarea id="v-desc" name="descripcion" rows="5" maxlength="1000" required></textarea></p>
-<button class="btn btn-primario ancho" type="submit">Publicar ganado</button>
+<button class="btn btn-primario ancho" type="submit">Publicar ganado</button><p class="form-feedback ancho" role="status" aria-live="polite" hidden></p>
 </form>
 <aside class="aviso"><h2>Consejos para publicar</h2><p>Usa fotos nítidas con buena luz, indica el peso real aproximado y escribe la ubicación exacta de la finca.</p></aside>
 </section>
@@ -66,5 +66,6 @@
 </section>
 <p class="derechos">© 2026 Bovimarket. Todos los derechos reservados. Proyecto académico.</p>
 </footer>
+<script src="js/app.js" defer></script>
 </body>
 </html>

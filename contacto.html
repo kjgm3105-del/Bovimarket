@@ -28,7 +28,7 @@
 </header>
 <main>
 <section class="pagina" aria-labelledby="t-c"><h1 id="t-c">Contacto</h1><p>Cuéntanos qué necesitas y te responderemos pronto.</p>
-<form class="formulario" action="#" method="post">
+<form class="formulario" data-contact-form action="#" method="post">
 <p><label for="c-nombre">Nombre completo</label><input id="c-nombre" name="nombre" type="text" autocomplete="name" minlength="3" required></p>
 <p><label for="c-correo">Correo electrónico</label><input id="c-correo" name="correo" type="email" autocomplete="email" required></p>
 <p><label for="c-tel">Teléfono celular</label><input id="c-tel" name="telefono" type="tel" pattern="3[0-9]{9}" placeholder="3001234567" title="Celular colombiano de 10 dígitos que empieza por 3" required></p>
@@ -36,7 +36,7 @@
 <p><label for="c-fecha">Fecha de contacto preferida</label><input id="c-fecha" name="fecha" type="date"></p>
 <p><label for="c-msg">Mensaje</label><textarea id="c-msg" name="mensaje" rows="5" minlength="10" maxlength="500" required></textarea></p>
 <p class="check"><input id="c-terminos" name="terminos" type="checkbox" required><label for="c-terminos">Acepto los términos y condiciones</label></p>
-<button class="btn btn-primario" type="submit">Enviar mensaje</button>
+<button class="btn btn-primario" type="submit">Enviar mensaje</button><p class="form-feedback" role="status" aria-live="polite" hidden></p>
 </form>
 <aside class="aviso"><h2>Otros medios (ejemplo)</h2><p>contacto@bovimarket.example<br>+57 300 000 0000</p></aside></section>
 </main>
@@ -57,5 +57,6 @@
 </section>
 <p class="derechos">© 2026 Bovimarket. Todos los derechos reservados. Proyecto académico.</p>
 </footer>
+<script src="js/app.js" defer></script>
 </body>
 </html>
