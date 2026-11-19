@@ -1,0 +1,30 @@
+{
+  "name": "bovimarket",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/package-worker.mjs",
+    "start": "node server/start.mjs",
+    "preview": "node server/start.mjs",
+    "test": "node --test server/market.test.mjs",
+    "db:generate": "drizzle-kit generate",
+    "build:netlify": "npm test && node scripts/migrate-netlify.mjs && npm run build"
+  },
+  "dependencies": {
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3",
+    "lucide-vue-next": "0.468.0",
+    "@libsql/client": "^0.15.15"
+  },
+  "devDependencies": {
+    "vite": "^7.2.2",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "drizzle-kit": "^0.31.0",
+    "drizzle-orm": "^0.44.7"
+  }
+}
