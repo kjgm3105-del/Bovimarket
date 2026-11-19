@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { Heart, MapPin, UserRound, ShoppingBag } from "lucide-vue-next";
-import { api, estado, favorito, operacion } from "../store";
+import { fotoGanado, api, estado, favorito, operacion } from "../store";
 import { dinero, unidad } from "../domain";
 import EstadoLista from "../components/EstadoLista.vue";
 const route = useRoute(),
@@ -20,7 +20,7 @@ onMounted(cargar);
     ><EstadoLista :cargando="ocupado" :error="error" @reintentar="cargar"
       ><div v-if="g" class="detalle">
         <div>
-          <img class="detail-photo" :src="g.imagen" :alt="g.titulo" />
+          <img class="detail-photo" :src="fotoGanado(g.imagen)" :alt="g.titulo" />
           <div class="surface descripcion">
             <h2>Descripción</h2>
             <p>{{ g.descripcion }}</p>

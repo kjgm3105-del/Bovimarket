@@ -17,6 +17,7 @@ import { razas, fotosRaza } from "../domain";
 import Ficha from "../components/Ficha.vue";
 import Filtros from "../components/Filtros.vue";
 import EstadoLista from "../components/EstadoLista.vue";
+const base = import.meta.env.BASE_URL;
 const router = useRouter(),
   filtros = ref({ raza: "", lugar: "", rango: "" });
 const fotos = [
@@ -72,7 +73,7 @@ function mover(n) {
             <Transition name="foto"
               ><img
                 :key="indice"
-                :src="'/img/' + fotos[indice][0] + '.webp'"
+                :src="base + 'img/' + fotos[indice][0] + '.webp'"
                 :alt="fotos[indice][1]"
                 width="675"
                 height="453"
@@ -106,7 +107,7 @@ function mover(n) {
           :to="{ path: '/catalogo', query: { raza: r } }"
           class="breed-card"
           ><img
-            :src="'/img/' + fotosRaza[i] + '.webp'"
+            :src="base + 'img/' + fotosRaza[i] + '.webp'"
             alt=""
             width="90"
             height="90"

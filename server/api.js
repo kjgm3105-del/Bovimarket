@@ -127,7 +127,7 @@ const insert = (db, table, data) =>
       ")",
     Object.values(data),
   );
-async function mercado(req, db) {
+async function mercado(req, db, desdePages) {
   const url = new URL(req.url),
     path = url.pathname.replace(/^\/api\/?/, "").replace(/\/$/, "");
   const [ruta, id, accion] = path.split("/"),
@@ -136,13 +136,13 @@ async function mercado(req, db) {
   if (post) {
     const origin = req.headers.get("origin");
     exigir(
-      !origin || origin === url.origin,
+      !origin || origin === url.origin || desdePages,
       403,
       "Origen de la solicitud inválido.",
     );
   }
   await prepararEjemplos(db);
-  const { user, token } = await sesion(db, req);
+  const { user, token } = await sesion(db, req, desdePages);
   const identificado = () => {
     exigir(user, 401, "Inicia sesión para continuar.");
     return user;
@@ -190,17 +190,26 @@ async function mercado(req, db) {
         "El correo o la contraseña son incorrectos.",
       );
     }
+    const nueva = await nuevaSesion(db, cuenta.id);
+    const respuesta = {
+      user: { id: cuenta.id, correo: mail, nombre: cuenta.nombre },
+    };
+    if (desdePages) respuesta.sesion = nueva;
     return json(
-      { user: { id: cuenta.id, correo: mail, nombre: cuenta.nombre } },
+      respuesta,
       path === "registro" ? 201 : 200,
-      { "Set-Cookie": await nuevaSesion(db, req, cuenta.id) },
+      desdePages ? {} : { "Set-Cookie": cookie(req, nueva, 604800) },
     );
   }
   if (post && path === "salir") {
     await cuerpo(req);
     if (token)
       await db.prepare("DELETE FROM sesiones WHERE token=?").bind(token).run();
-    return json({ ok: true }, 200, { "Set-Cookie": cookie(req, "", 0) });
+    return json(
+      { ok: true },
+      200,
+      desdePages ? {} : { "Set-Cookie": cookie(req, "", 0) },
+    );
   }
   if (!post && ruta === "foto" && id) {
     const row = await db
@@ -475,12 +484,27 @@ async function mercado(req, db) {
   }
   throw new Problema(404, "No se encontró esta sección de la API.");
 }
-export async function api(req, db) {
+export async function api(req, db, origenPages) {
+  const desdePages =
+    Boolean(origenPages) && req.headers.get("Origin") === origenPages;
+  if (req.method === "OPTIONS" && desdePages) {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Access-Control-Allow-Origin": origenPages,
+        "Access-Control-Allow-Methods": "GET, POST",
+        "Access-Control-Allow-Headers": "Content-Type, X-Bovimarket-Sesion",
+        "Access-Control-Max-Age": "600",
+        Vary: "Origin",
+      },
+    });
+  }
+  let respuesta;
   try {
-    return await mercado(req, db);
+    respuesta = await mercado(req, db, desdePages);
   } catch (e) {
     if (!e.status) console.error("Error de Bovimarket:", e.message);
-    return json(
+    respuesta = json(
       {
         error: e.status
           ? e.message
@@ -489,4 +513,8 @@ export async function api(req, db) {
       e.status || 500,
     );
   }
+  respuesta.headers.append("Vary", "Origin");
+  if (desdePages)
+    respuesta.headers.set("Access-Control-Allow-Origin", origenPages);
+  return respuesta;
 }

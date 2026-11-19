@@ -1,4 +1,5 @@
 <script setup>
+import { fotoGanado } from "../store";
 import { Heart, MapPin, Scale, Clock3 } from "lucide-vue-next";
 import { dinero, unidad } from "../domain";
 defineProps({ item: { type: Object, required: true }, guardado: Boolean });
@@ -9,7 +10,7 @@ defineEmits(["favorito"]);
     <div class="ficha-foto">
       <RouterLink :to="'/ganado/' + item.id" :aria-label="'Ver ' + item.titulo"
         ><img
-          :src="item.imagen"
+          :src="fotoGanado(item.imagen)"
           :alt="item.titulo"
           loading="lazy"
           width="500"

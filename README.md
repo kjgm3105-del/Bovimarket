@@ -2,9 +2,15 @@
 
 Compra y venta de ganado bovino en Colombia. La entrega final conserva las fotos, las razas y la identidad verde, crema, café y amarilla del proyecto. La aplicación conecta a compradores y vendedores mediante una SPA en Vue 3 y una API propia con datos compartidos.
 
-**Aplicación de la entrega** · [Abrir Bovimarket](https://bovimarket-campo-colombia.chattydingo512.chatgpt.site)
+**GitHub Pages** · [Abrir Bovimarket en GitHub Pages](https://kjgm3105-del.github.io/Bovimarket/)
+
+**Aplicación y API en el mismo servidor** · [Abrir Bovimarket](https://bovimarket-campo-colombia.chattydingo512.chatgpt.site)
 
 **Avances en el repositorio** · [Primera entrega](https://github.com/kjgm3105-del/Bovimarket/tree/b0fd220) · [Avance 2](https://github.com/kjgm3105-del/Bovimarket/tree/8751831)
+
+## Abrir desde GitHub
+
+En el repositorio, entra en **Settings → Pages → Visit site**. También puedes usar el enlace de GitHub Pages de arriba. El flujo **Publicar Bovimarket en GitHub Pages** compila Vue para la ruta `/Bovimarket/` y publica la interfaz tras cada actualización de `main`. El catálogo, los anuncios y los pedidos usan la API de la aplicación alojada y la misma base de datos. En Pages, la sesión se conserva durante la pestaña.
 
 ## Abrir en VS Code
 

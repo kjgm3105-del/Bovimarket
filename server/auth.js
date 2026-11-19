@@ -27,11 +27,14 @@ export async function derivar(password, salt) {
     ),
   );
 }
-export async function sesion(db, request) {
-  const token = (request.headers.get("cookie") || "").match(
-    /(?:^|;\s*)bovi_sesion=([a-f0-9]{64})(?:;|$)/,
-  )?.[1];
-  if (!token) return { user: null, token: null };
+export async function sesion(db, request, desdePages) {
+  const token = desdePages
+    ? request.headers.get("X-Bovimarket-Sesion")
+    : (request.headers.get("cookie") || "").match(
+        /(?:^|;\s*)bovi_sesion=([a-f0-9]{64})(?:;|$)/,
+      )?.[1];
+  if (!token || !/^[a-f0-9]{64}$/.test(token))
+    return { user: null, token: null };
   const hash = await digest(token);
   const user = await db
     .prepare(
@@ -47,13 +50,13 @@ export const cookie = (req, token, age) =>
   "; Path=/; HttpOnly; SameSite=Lax; Max-Age=" +
   age +
   (new URL(req.url).protocol === "https:" ? "; Secure" : "");
-export async function nuevaSesion(db, req, id) {
+export async function nuevaSesion(db, id) {
   const token = secreto();
   await db
     .prepare("INSERT INTO sesiones (token,usuario,vence) VALUES (?,?,?)")
     .bind(await digest(token), id, Date.now() + 604800000)
     .run();
-  return cookie(req, token, 604800);
+  return token;
 }
 export async function permitirIntento(db, key, max) {
   const id = await digest(key),

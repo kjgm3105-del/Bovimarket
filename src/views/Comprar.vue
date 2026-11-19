@@ -2,7 +2,7 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { MapPin, Handshake, ShoppingBag } from "lucide-vue-next";
-import { api, cargar, estado, operacion } from "../store";
+import { fotoGanado, api, cargar, estado, operacion } from "../store";
 import { dinero, hoy, importe, unidad } from "../domain";
 import Campo from "../components/Campo.vue";
 import EstadoLista from "../components/EstadoLista.vue";
@@ -120,7 +120,7 @@ onMounted(cargarFicha);
           </p>
         </form>
         <aside class="surface resumen">
-          <img :src="g.imagen" :alt="g.titulo" /><span class="kicker"
+          <img :src="fotoGanado(g.imagen)" :alt="g.titulo" /><span class="kicker"
             >Resumen del pedido</span
           >
           <h2>{{ g.titulo }}</h2>

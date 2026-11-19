@@ -3,7 +3,8 @@ const assets = BOVIMARKET_ASSETS;
 export default {
   async fetch(req, env) {
     const path = new URL(req.url).pathname;
-    if (path.startsWith("/api/")) return api(req, env.DB);
+    if (path.startsWith("/api/"))
+      return api(req, env.DB, "https://kjgm3105-del.github.io");
     const asset = assets[path === "/" ? "/index.html" : path];
     if (!Array.isArray(asset) || !["GET", "HEAD"].includes(req.method))
       return new Response("Recurso no encontrado", { status: 404 });

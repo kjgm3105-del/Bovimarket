@@ -47,15 +47,34 @@ export function favorito(id) {
       : "El navegador no permitió guardar los favoritos.",
   );
 }
+const origenApi = import.meta.env.VITE_API_ORIGIN || "";
+const claveSesion = "bovimarket_sesion_pages";
+let sesionPages = "";
+if (origenApi) {
+  try {
+    sesionPages = sessionStorage.getItem(claveSesion) || "";
+  } catch {}
+}
+function guardarSesionPages(token) {
+  sesionPages = token;
+  try {
+    if (token) sessionStorage.setItem(claveSesion, token);
+    else sessionStorage.removeItem(claveSesion);
+  } catch {}
+}
+export function fotoGanado(ruta) {
+  if (ruta.startsWith("/api/")) return origenApi + ruta;
+  return import.meta.env.BASE_URL + ruta.replace(/^\//, "");
+}
 export async function api(path, body) {
   let res;
   try {
-    res = await fetch("/api/" + path, {
-      credentials: "same-origin",
-      headers:
-        body === undefined
-          ? { Accept: "application/json" }
-          : { "Content-Type": "application/json", Accept: "application/json" },
+    const headers = { Accept: "application/json" };
+    if (body !== undefined) headers["Content-Type"] = "application/json";
+    if (origenApi && sesionPages) headers["X-Bovimarket-Sesion"] = sesionPages;
+    res = await fetch(origenApi + "/api/" + path, {
+      credentials: origenApi ? "omit" : "same-origin",
+      headers,
       method: body === undefined ? "GET" : "POST",
       body: body === undefined ? undefined : JSON.stringify(body),
     });
@@ -73,10 +92,21 @@ export async function api(path, body) {
     );
   }
   if (!res.ok) {
-    if (res.status === 401 && path !== "login") estado.user = null;
+    if (res.status === 401 && path !== "login") {
+      estado.user = null;
+      if (origenApi) guardarSesionPages("");
+    }
     const err = Error(data.error || "Error HTTP " + res.status);
     err.status = res.status;
     throw err;
+  }
+  if (origenApi) {
+    if ((path === "login" || path === "registro") && data.sesion) {
+      guardarSesionPages(data.sesion);
+      delete data.sesion;
+    } else if (path === "salir" || (path === "sesion" && !data.user)) {
+      guardarSesionPages("");
+    }
   }
   return data;
 }

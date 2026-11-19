@@ -13,7 +13,8 @@
     "preview": "node server/start.mjs",
     "test": "node --test server/market.test.mjs",
     "db:generate": "drizzle-kit generate",
-    "build:netlify": "npm test && node scripts/migrate-netlify.mjs && npm run build"
+    "build:netlify": "npm test && node scripts/migrate-netlify.mjs && npm run build",
+    "build:pages": "vite build --mode pages --base /Bovimarket/"
   },
   "dependencies": {
     "vue": "^3.5.24",

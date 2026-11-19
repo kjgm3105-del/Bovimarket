@@ -230,3 +230,53 @@ test("Anuncios, bandeja de mensajes, soporte y validación de campos", async (t)
     201,
   );
 });
+
+test("GitHub Pages registra y recupera la sesión sin cookies de terceros", async (t) => {
+  const { db } = escenario(t);
+  const origen = "https://kjgm3105-del.github.io";
+  async function pages(path, method, body, headers = {}) {
+    return api(
+      new Request("https://bovi.test/api/" + path, {
+        method,
+        headers: {
+          Origin: origen,
+          "Content-Type": "application/json",
+          ...headers,
+        },
+        body: body === undefined ? undefined : JSON.stringify(body),
+      }),
+      db,
+      origen,
+    );
+  }
+  const previo = await pages("registro", "OPTIONS");
+  assert.equal(previo.status, 204);
+  assert.equal(previo.headers.get("Access-Control-Allow-Origin"), origen);
+  const registro = await pages("registro", "POST", {
+    nombre: "Compradora",
+    correo: "pages@example.test",
+    clave: "prueba-local-2026",
+  });
+  assert.equal(registro.status, 201);
+  assert.equal(registro.headers.get("Set-Cookie"), null);
+  const { sesion, user } = await registro.json();
+  const auth = { "X-Bovimarket-Sesion": sesion };
+  const cuentaActual = await pages("sesion", "GET", undefined, auth);
+  assert.equal((await cuentaActual.json()).user.id, user.id);
+  const cookieAjena = await pages("sesion", "GET", undefined, {
+    cookie: "bovi_sesion=" + sesion,
+  });
+  assert.equal((await cookieAjena.json()).user, null);
+  const denegado = await pages(
+    "anuncios",
+    "POST",
+    {},
+    { Origin: "https://otro.example", ...auth },
+  );
+  assert.equal(denegado.status, 403);
+  assert.equal(denegado.headers.get("Access-Control-Allow-Origin"), null);
+  const compra = await pages("pedidos", "POST", pedido("demo-1"), auth);
+  assert.equal(compra.status, 201);
+  assert.equal((await pages("salir", "POST", {}, auth)).status, 200);
+  assert.equal((await pages("cuenta", "GET", undefined, auth)).status, 401);
+});
