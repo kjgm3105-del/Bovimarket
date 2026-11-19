@@ -1,77 +1,92 @@
 # Bovimarket
 
-**El mercado ganadero, más cerca de ti.** Proyecto académico de Desarrollo de Aplicación Web Frontend (Universidad de Córdoba).
+Compra y venta de ganado bovino en Colombia. La entrega final conserva las fotos, las razas y la identidad verde, crema, café y amarilla del proyecto. La aplicación conecta a compradores y vendedores mediante una SPA en Vue 3 y una API propia con datos compartidos.
 
-## Descripción
-Bovimarket es una aplicación web frontend para conectar compradores y vendedores de ganado bovino en Colombia. Esta versión integra la interfaz responsive de la primera entrega con la lógica del **Avance 2**: manipulación del DOM, eventos, consumo asíncrono de datos, persistencia local y validación dinámica.
+**Aplicación de la entrega** · [Abrir Bovimarket](https://bovimarket-campo-colombia.chattydingo512.chatgpt.site)
 
-## Tecnologías
-- HTML5 semántico y CSS3 (Grid, Flexbox, variables y media queries).
-- JavaScript nativo (ES6+), DOM y eventos `submit`, `click`, `input` y `change`.
-- Fetch API con `async/await` y manejo de errores HTTP mediante `try/catch`.
-- `localStorage` y JSON para publicaciones, contactos y favoritos.
-- Google Fonts y Bootstrap Icons por CDN.
+**Avances en el repositorio** · [Primera entrega](https://github.com/kjgm3105-del/Bovimarket/tree/b0fd220) · [Avance 2](https://github.com/kjgm3105-del/Bovimarket/tree/8751831)
 
-## Estructura
-```text
-Bovimarket/
-├── index.html
-├── vender.html
-├── contacto.html
-├── styles.css
-├── data.json             # Fuente local consumida mediante Fetch
-├── js/
-│   └── app.js            # Lógica del Avance 2
-├── assets/
-│   └── images/
-└── README.md
+## Abrir en VS Code
+
+Instala Node.js 24 LTS (mínimo 22.13). Abre en VS Code la carpeta que contiene `package.json`. En **Terminal → Nueva terminal**, ejecuta:
+
+```sh
+npm install
+npm run dev
 ```
 
-## Cómo ejecutar localmente
-Fetch no puede leer `data.json` correctamente abriendo el HTML con `file://`. Ejecuta el proyecto desde un servidor local:
+Abre la dirección que imprime Vite, normalmente **http://localhost:5173**. Este comando inicia la interfaz y la API. La base de datos local se crea en `.local/bovimarket.sqlite`. Los favoritos y borradores se guardan en el navegador que utilizas. Live Server corresponde a los dos primeros avances.
 
-**Opción 1 – VS Code:** instala la extensión Live Server, abre la carpeta del proyecto y selecciona **Open with Live Server**.
+Para ejecutar la distribución optimizada:
 
-**Opción 2 – Python:**
-```bash
-python -m http.server 5500
+```sh
+npm run build
+npm start
 ```
-Luego abre `http://localhost:5500` en el navegador.
 
-## Funcionalidades del Avance 2
+Entra en **http://localhost:4173**. En Windows, **Ctrl+C** detiene el servidor. La base de datos de tu computador y la de la aplicación alojada son independientes.
 
-### 1. DOM y eventos
-- El catálogo se construye dinámicamente con `create`/`innerHTML` y se actualiza al filtrar o guardar favoritos.
-- Los formularios interceptan `submit` con `event.preventDefault()` para evitar recargas.
-- Eventos delegados `click`, `input` y `change` para favoritos, detalles, filtros y validaciones.
+## Probar una compra y una venta
 
-### 2. Consumo asíncrono
-- `loadCattle()` consulta `data.json` con `fetch` y `async/await`.
-- Comprueba `response.ok` y diferencia el error HTTP 404 de otros estados HTTP no exitosos (incluido 500).
-- `try/catch` muestra al usuario mensajes de carga, éxito o error. Si falla la consulta, intenta mostrar las publicaciones que ya estén guardadas localmente.
+1. Crea una cuenta de vendedor. En **Vender ganado**, publica un animal con foto, celular de contacto, cantidad y precio. El borrador del formulario se recupera si recargas.
+2. Abre una ventana de incógnito, crea otra cuenta y busca esa publicación por raza o municipio. Pulsa **Comprar ganado**, indica la cantidad, la fecha de recogida y el celular. Revisa el total y confirma.
+3. El comprador recibe un número de pedido en **Mi cuenta → Compras**. El vendedor ve la misma operación en **Ventas**. Solo las partes del pedido consultan sus datos de contacto.
+4. Para cancelar un pedido confirmado, elige **Cancelar pedido** y confirma el cambio. El stock vuelve al catálogo. Para completar la operación, el vendedor marca **Entregado** y el comprador confirma la recepción.
+5. El precio puede fijarse por animal, por lote completo o por kilo en pie. En la tercera modalidad, el total usa el peso por animal anunciado. El servidor calcula el importe. El pago se acuerda **contra entrega**. Las seis publicaciones iniciales están identificadas en su ficha como muestras académicas. Para demostrar la entrega con ambas cuentas, usa una publicación creada por ti.
+6. En **Anuncios**, publica una búsqueda de ganado, una oferta de transporte o un servicio. Desde otra cuenta, contacta al anunciante. En **Mi cuenta → Mensajes**, el anunciante puede leer la consulta y responder al correo que compartió el interesado. Los avisos de ganado en venta aparecen automáticamente mientras tienen existencias.
 
-### 3. Persistencia
-Los datos se serializan como JSON en `localStorage`:
-- `bovimarket_publicaciones`: publicaciones creadas desde **Vender ganado**.
-- `bovimarket_contactos`: mensajes enviados desde los formularios de contacto.
-- `bovimarket_favoritos`: identificadores de publicaciones favoritas.
+## Dónde está cada avance
 
-Los datos permanecen en el navegador después de recargar la página. Son datos locales de demostración; no se envían a un servidor ni se comparten entre dispositivos.
+| Entrega | Qué mostrar | Dónde está |
+| --- | --- | --- |
+| Primera | HTML semántico, formularios, imágenes, Grid, Flexbox y adaptación móvil | Primer commit del repositorio. En la SPA se mantienen en `index.html`, `src/App.vue`, las vistas y `src/styles.css`. |
+| Avance 2 | Eventos, DOM nativo, Fetch, validación, favoritos y publicaciones locales | Commit del Avance 2, `js/app.js` y `data.json`. La versión final reutiliza los identificadores de favoritos. En **Vender ganado** puedes recuperar una publicación antigua como borrador si sigue en el mismo origen del navegador. |
+| Entrega final | Componentes .vue, rutas SPA, estado compartido y distribución de producción | `src/components/`, `src/views/`, `src/router.js`, `src/store.js` y `vite.config.js`. |
 
-### 4. Validación
-Se combina la validación nativa HTML (`required`, `min`, `max`, `pattern`, `type`) con validación en tiempo real en eventos `input` y `change`. Los campos válidos e inválidos reciben estilos y mensajes junto al campo.
+## Arquitectura
 
-## Pruebas sugeridas para la sustentación
-1. Abrir Inicio y observar el estado de carga y luego el catálogo obtenido desde `data.json`.
-2. Filtrar por raza, ubicación y rango de precio; pulsar **Limpiar** para restablecer el catálogo.
-3. Marcar y desmarcar una publicación como favorita y recargar para comprobar su persistencia.
-4. En **Vender ganado**, enviar el formulario vacío para observar la validación; después registrar una publicación completa.
-5. Volver a Inicio y recargar: la nueva publicación debe aparecer.
-6. En **Contacto**, enviar un mensaje válido y revisar el mensaje de confirmación.
-7. Para probar el manejo de error, renombrar temporalmente `data.json`, recargar Inicio y observar el mensaje de error; luego restaurar el nombre.
+| Carpeta o archivo | Responsabilidad |
+| --- | --- |
+| `src/views/` | Inicio, catálogo, ficha, compra, venta, acceso, cuenta, anuncios y contacto. |
+| `src/components/` | Barra de marca, filtros, tarjetas, campos con validación y estados de carga o error. |
+| `src/domain.js` | Razas, modalidades, departamentos, formato COP y cálculo del resumen. |
+| `src/store.js` | Estado reactivo compartido, cliente Fetch, sesión, favoritos y borradores. |
+| `server/api.js` | Rutas, permisos por usuario, validación del servidor y reserva de existencias. |
+| `server/auth.js` | Registro e inicio de sesión. Contraseñas derivadas con sal individual y sesiones revocables en cookies HttpOnly. |
+| `server/schema.js`, `drizzle/` | Tablas SQL y migraciones. |
+| `server/local.mjs`, `server/worker.js` | Adaptadores para SQLite local y D1 en la versión alojada. |
+| `netlify/functions/`, `netlify.toml` | Despliegue alternativo de la SPA y de la misma API en Netlify con una base Turso. |
+| `public/img/` | Fotografías originales optimizadas en WebP. Las imágenes cargadas por los vendedores se comprimen en el navegador y se sirven por la API. |
+| `dist/client/`, `dist/server/` | Interfaz optimizada y servidor de producción generados con `npm run build`. |
 
-## Alcance y limitaciones
-La API consumida es un archivo JSON local estructurado, alternativa permitida por la guía. `localStorage` guarda los registros únicamente en el navegador y dispositivo actuales. No existe backend, autenticación ni envío real de mensajes.
+## API para la sustentación
 
-## Próxima entrega
-La entrega final migrará esta lógica a Vue.js, incorporará componentes, Vue Router, estado compartido y despliegue en producción.
+Abre **Herramientas de desarrollador → Red → Fetch/XHR**. Recarga el catálogo y revisa la respuesta de `/api/ganado`. Después abre **Anuncios** para ver `/api/anuncios`. Los métodos de escritura se prueban desde los formularios de la aplicación.
+
+| Método y ruta | Para qué sirve |
+| --- | --- |
+| GET `/api/ganado`, GET `/api/ganado/:id` | Consultar el catálogo, el detalle y las existencias disponibles. |
+| POST `/api/registro`, POST `/api/login`, GET `/api/sesion`, POST `/api/salir` | Crear una cuenta y abrir, consultar o cerrar la sesión. |
+| POST `/api/ganado` | Publicar ganado y su fotografía desde una cuenta identificada. |
+| POST `/api/pedidos` | Verificar la cantidad, calcular el total y reservar existencias. Un reintento de la misma solicitud conserva el pedido. |
+| POST `/api/pedidos/:id/estado` | Cancelar un pedido confirmado, marcar entrega o confirmar recepción, según el rol. |
+| GET y POST `/api/anuncios` | Consultar el tablón o publicar un aviso de la comunidad. |
+| POST `/api/mensajes`, GET `/api/cuenta` | Registrar una consulta y ver las operaciones o mensajes de la cuenta. |
+
+**Explicación corta para exponer:** “Con Vue separé cada pantalla en componentes. El catálogo pide los animales a mi API con Fetch. Cuando confirmo una compra, el servidor comprueba el stock, calcula el precio y guarda un pedido que ven tanto el comprador como el vendedor. El tablón consulta la misma base de datos y también permite publicar avisos”.
+
+En `Ficha.vue`, la tarjeta recibe el animal mediante una **prop** y emite el evento **favorito**. En `Campo.vue`, **v-model** conecta el campo con el formulario mediante `update:modelValue`. En `Catalogo.vue`, una propiedad computada filtra los datos y **v-for** dibuja las tarjetas. En `store.js`, la función **api** hace la petición HTTP y maneja las respuestas de error. En `server/api.js`, busca **path === "pedidos"** para explicar la validación de la compra.
+
+## Verificación y despliegue continuo
+
+```sh
+npm test
+npm run build
+```
+
+Las pruebas usan bases temporales. Cubren registro, sesión, permisos, mensajes, cancelación, entrega, precios por modalidad, reintentos y dos compras que compiten por el último lote. La distribución separa las rutas en archivos cargados bajo demanda.
+
+La entrega incluye un servidor de producción con D1. Para administrar una instalación con despliegue continuo desde tu propio GitHub en **Netlify**, importa el repositorio, selecciona la rama de la entrega, crea una base **Turso** y configura `TURSO_DATABASE_URL` y `TURSO_AUTH_TOKEN` en el entorno privado de compilación y funciones. Netlify lee `netlify.toml`, aplica las migraciones pendientes, verifica las pruebas y publica el frontend y la API con cada actualización de la rama. Ambos entornos mantienen bases independientes. Los secretos se configuran en el proveedor.
+
+El formulario de contacto registra tickets de soporte en la tabla `mensajes`. Los mensajes entre usuarios se consultan en sus bandejas. Los correos externos se abren con la aplicación de correo que tenga configurada cada persona.
+
