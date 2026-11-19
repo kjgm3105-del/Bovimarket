@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { mkdir, readFile, writeFile, readdir, cp } from "node:fs/promises";
+import { mkdir, readFile, readdir } from "node:fs/promises";
 import { extname } from "node:path";
 const catalog = {};
 const types = {
@@ -34,6 +34,4 @@ await build({
   define: { BOVIMARKET_ASSETS: JSON.stringify(catalog) },
   outfile: "dist/server/index.js",
 });
-await mkdir("dist/.openai", { recursive: true });
-await cp(".openai/hosting.json", "dist/.openai/hosting.json");
 console.log("SPA y API de producción listas.");
